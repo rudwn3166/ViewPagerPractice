@@ -8,16 +8,29 @@ import com.example.viewpagerpractice.fragments.InfoFragment
 import com.example.viewpagerpractice.fragments.NameFragment
 
 class FragmentAdapter(fm : FragmentManager): FragmentPagerAdapter(fm) {
+
+
+    override fun getPageTitle(position: Int): CharSequence? {
+
+        return when (position){
+            0->"이름"
+            1->"정보"
+            else->"인사말"
+
+        }
+
+
+    }
+
+
     override fun getItem(position: Int): Fragment {
 
-        if (position == 0) {
-            return NameFragment()
-        }
-        else if (position == 1) {
-            return InfoFragment()
-        }
-        else {
-            return GreetingFragment()
+        return when (position){
+
+            0->NameFragment()
+            1->InfoFragment()
+            else->GreetingFragment()
+
         }
 
     }
